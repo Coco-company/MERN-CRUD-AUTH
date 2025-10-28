@@ -1,7 +1,7 @@
 //01:19:25
 import {Router} from 'express';
 import { authRequired } from '../middlewares/validateToken.js';  //modulo de autorizacion
-import {getTasks,getTask,createTask,updateTask,deleteTask} from '../Controllers/tasks.controller.js'
+import {getTasks,getTask,createTask,updateTask,deleteTask} from '../Controllers/tasks.controller.js';
 
 const router = Router();
 
@@ -14,4 +14,4 @@ router.put('/tasks/:id', authRequired, updateTask);
 
 
 
-export default router;
+export default router;  

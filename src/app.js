@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
 import authRoutes from './routes/auth.routes.js';
-import taskRoutes from './routes/tasks.routes.js';   //01:20:30
+import taskRoutes from './routes/tasks.routes.js';   //01:20:20
 
 const app = express(); 
 
