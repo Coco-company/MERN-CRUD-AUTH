@@ -9,7 +9,7 @@ const app = express();
 
 app.use(morgan("dev"));
 app.use(express.json()); //permite leer json en el entorno Express
-app.use(cookieParser()); //parsea la cookie como json (Formato orig "token=...")
+app.use(cookieParser()); //01:11:40 parsea la cookie como json en consola (Formato orig "token=...")
 
 app.use("/api", authRoutes); //El primer parametro agrega "/api" al inicio de la ruta
 app.use("/api", taskRoutes);  //01:20:30

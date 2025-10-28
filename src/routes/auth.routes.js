@@ -12,6 +12,7 @@ router.post("/login",validateSchema(loginSchema), login);   // 01:49:12
 
 router.post("/logout", logout);
 
+// Validar Token 01:03:20
 //authRequired es un MIDDLEWARE tiene parametro NEXT por lo cual continua a "profile"
 router.get("/profile", authRequired, profile);      //Toda ruta que querramos proteger podemos colocarle un "auth required"
 

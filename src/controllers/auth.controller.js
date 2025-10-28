@@ -5,6 +5,17 @@ import bcrypt from "bcryptjs";
 import {createAccessToken} from '../libs/jwt.js'
 
 // ------------------------- REGISTRO --------------------------
+
+//MODELO DE PRUEBA
+// THunder client >>> Body > Json
+// [POST] http://localhost:4000/api/register
+
+/*{  
+ "email":"test01@test.com",   
+ "password": "test01",
+ "username": "test01"
+}*/
+
 export const register = async (req, res) => {
     const {email,password,username} = req.body
     //console.log(req.body)
@@ -46,6 +57,17 @@ export const register = async (req, res) => {
 //export const login = (req, res) => res.send("login");
 
 // -------------------------- LOGEO --------------------------
+// 00:55:00 
+
+//MODELO DE PRUEBA
+// THunder client >>> Body > Json
+// [POST] http://localhost:4000/api/login
+
+/*{
+ "email":"test01@test.com",   
+ "password": "test01"
+}*/
+
 export const login = async (req, res) => {
     const {email,password} = req.body
     //console.log(req.body)
@@ -57,10 +79,12 @@ export const login = async (req, res) => {
         
         const isMatch = await bcrypt.compare(password, userFound.password);
         if(!isMatch) return res.status(400).json({ message: "Contraseña Incorrecta" });
-        // CREAMOS TOKEN
+        // CREAMOS TOKEN 00:58:00
         const token = await createAccessToken({id: userFound._id});
 
         res.cookie("token",token); //cookie metodo de Express
+
+        //      01:00:00
         res.json({               //como para el front end no voy a necesitar el pass
             id: userFound._id,
             username: userFound.username,
@@ -88,9 +112,9 @@ export const logout = (req, res) => {
 }
 
 // -------------------------- RUTA PROTEGIDA --------------------------
-export const profile = (req, res) => {
+export const profile = async (req, res) => {
     //console.log(req.user)           
-    const userFound = User.findById(req.user.id) //01:16:30
+    const userFound = await User.findById(req.user.id) //01:16:30
 
     if(!userFound) return res.status(400).json({ message: "user not found" });
 
