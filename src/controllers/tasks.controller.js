@@ -31,7 +31,7 @@ export const createTask = async (req,res) => { //1:26:55
 // 01:27:30
 export const getTask = async (req,res) => {
     //const task = await Task.findById(req.params.id)  //01:27:56 //
-    const task = await Task.findById(req.params.id).populate('user') //??  //01:37:00
+    const task = await Task.findById({ user: req.user.id }).populate('user') //??  //01:37:00
     // req.params.id es el dato de la url que le estoy pasando desde task.routes.js
     if(!task) return res.status(404).json({message: "Task not found"})
     //res.json(task) No es necesario que envie un response
