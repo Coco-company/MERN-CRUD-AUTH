@@ -16,7 +16,7 @@ const taskSchema = new mongoose.Schema({
         default: Date.now
     },  
     user: {     //01:32:40
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId, /* NO ES "String", ES UN "Object ID" (Exclusivo de MongoDB) */
         ref: 'User',
         required: true
     }

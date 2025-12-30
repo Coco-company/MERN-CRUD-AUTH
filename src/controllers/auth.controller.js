@@ -21,8 +21,8 @@ export const register = async (req, res) => {
     //console.log(req.body)
     //console.log(email, password, username)
     //creacion token 00:39:42
-    try {
-
+    try {   // En la practica no es 100% asi, hay mas validaciones
+        
         const passwordHash = await bcrypt.hash(password,10);
 
         const newUser = new User({   //User.create({})
